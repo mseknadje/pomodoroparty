@@ -1,0 +1,21 @@
+p {
+    background-color: red;
+}
+
+.circleBase {
+    border-radius: 50%;
+
+}
+
+.type1 {
+    position: absolute;
+    width: 488.95px;
+    height: 473.22px;
+    left: 457px;
+    top: 379px;
+    color:aquamarine;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
