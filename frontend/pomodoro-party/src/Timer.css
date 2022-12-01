@@ -15,7 +15,7 @@
 
 } */
 
-.button button1 {
+button {
     box-sizing: border-box;
     position: absolute;
     width: 488.93px;
@@ -39,3 +39,11 @@
     line-height: 39px;
     text-align: center;
   }
+
+  /* .button button2 {
+    position: absolute;
+    width: 210px;
+    height: 209px;
+    left: 792px;
+    top: 165px;
+  } */
