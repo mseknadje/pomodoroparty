@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './Timer.css';
 
 
+
 function startTimer() {
     alert("click")
 }
@@ -19,11 +20,8 @@ function Timer() {
         // alert("start")
         setStartButton(true)
 
-   
       }
 
-
-    
     useEffect(() => {
         if (startButton) {
         let interval = setInterval(() => {
@@ -58,10 +56,14 @@ function Timer() {
       <div className="timer">
         {/* Components that update */}
       </div>
-      
-      <div className="circleBase type1"> 
+      <div className="button button1"> 
         <button onClick={start}> {timerMinutes}:{timerSeconds} </button>
       </div>
+
+      {/* <div className="button button2"> 
+        <button onClick={start}> {timerMinutes}:{timerSeconds} </button>
+      </div> */}
+
     </div>
   )
   
