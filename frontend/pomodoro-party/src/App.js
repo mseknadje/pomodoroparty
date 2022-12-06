@@ -6,18 +6,18 @@ import Navbar from './Navbar';
 import { Party } from './Pages/Party';
 import { Profile } from './Pages/Profile';
 import Todo from './Todo';
-// import { Route, Routes} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 
 function App() {
   return (
     <>
-    <Navbar/>
+   
     <div className="container">
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<App />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/party" element={<Party />} />
-      </Routes> */}
+      </Routes>
       </div>
     <Todo/>
     <div className="App">
