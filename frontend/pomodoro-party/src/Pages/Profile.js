@@ -1,3 +1,8 @@
+import Navbar from '../Navbar';
+
 export function Profile() {
-    return <h1>Profile</h1>
+    return (<div>
+         <Navbar/>
+         <h1>Profile</h1>
+    </div>)
 }
