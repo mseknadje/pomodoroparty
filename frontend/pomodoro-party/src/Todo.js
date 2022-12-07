@@ -1,4 +1,4 @@
-import { Box, Checkbox, Heading,FormControl, Input } from "@chakra-ui/react"
+import { Box, Checkbox, Heading,FormControl, FormLabel, Input, Center } from "@chakra-ui/react"
 import { useState } from "react";
 import useEventListener from '@use-it/event-listener'
 import { redirect } from "react-router-dom";
@@ -28,17 +28,34 @@ export default function Todo(){
       }
     
     useEventListener('keydown', handler);
-    
 
-    return <Box position="absolute" top="6px" width="313px" height="368px" left="0px" 
-    background="#D9D9D9" p="15px">
-                 <Heading as="h1" color="white">Todo List</Heading>
+
+    return <Box position="absolute" top="36px" width="313px" height="368px" left="0px" 
+    background="#fff" p="15px">
+        <Center>
+                 <Heading as="h1" color="black" border="solid 1px black"
+                 padding="2px 10px" fontWeight={"normal"} mb="15px">To-Do List</Heading>
+                 </Center>
                  {
-                    todoList.map(t=> {
-                        return <FormControl><Checkbox pl="10px"/><label>{t}</label></FormControl>
+                    todoList.map((t,i)=> {
+                        return <FormControl key={i}><Checkbox mt="5px" pl="10px" mr="10px"/>
+                        <FormLabel display={"inline-block"} mt="-5px">{t}</FormLabel>
+                        </FormControl>
                     })
                  }
-                 <Input value={inputValue} onChange={handleOnChange}   />
+                 <Center position="absolute" bottom="10px" left="0"
+                 
+                 width={"100%"}>
+                 <Input border="solid 1px black"
+                 borderColor={"black"}
+                 height="23px"
+                 mt="15px"
+                 placeholder="add an item"
+                 width={"200px"}
+                  borderRadius={"10px"} value={inputValue} onChange={handleOnChange}   />
+</Center>
 
     </Box>
 }
+
+
