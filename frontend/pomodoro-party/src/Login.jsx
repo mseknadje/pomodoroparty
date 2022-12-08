@@ -58,3 +58,21 @@ function createAccount() {
         // ..
     });
 }
+
+export default function Login(){
+    return(
+    <body>
+        <div id="login_div" class = "main_div">
+            <h3>Login to your account</h3>
+            <input type="email" placeholder="Email..." id="email_field"/>
+            <input type="password" placeholder="Email..." id = "password_field"/>
+            <button onclick="login()">Login to Account</button>
+        </div>
+        <div id="user_div" class="loggedin-div">
+            <h3>Welcome User</h3>
+            <p>You're currently logged in</p>
+            <button onclick="logout()">Logout</button>
+            <button onclick="createAccount()">Create Account</button>
+        </div>
+    </body>)
+}
