@@ -12,7 +12,8 @@ export default function Main(){
         <Link display={"inline-block"} href="/profile" background="#fff" border="solid 1px black" p="5px 10px" >Invite a Friend</Link>   
     </Box>
    </Center>
-    <Todo/>
+    
+    <Todo />
     
     <Timer minutes={5} width={"210px"} height={"209px"} left={"792px"} top={"165px"} background={"#00798C91"} />  
     <Timer minutes={25} width={"488.95px"} height={"473.22px"} left={"457px"} top={"379px"} background={"#FFBFBF"} /> 

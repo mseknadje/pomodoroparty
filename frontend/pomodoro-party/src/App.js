@@ -10,16 +10,19 @@ import { Route, Routes} from "react-router-dom";
 import { Box } from "@chakra-ui/react"
 import Main from "./Main"
 
+/**
+ * The top-level function that contains routes to each page 
+ * @returns 
+ */
 function App() {
   return (
     <Box className="container" bgColor={"#FFF3F3"}>
       <Routes>
-         <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/party" element={<Party />} />
       </Routes>
-      </Box>
-
+    </Box>
   );
 }
 
