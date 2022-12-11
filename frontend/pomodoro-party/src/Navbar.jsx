@@ -5,7 +5,7 @@ export default function Navbar() {
     return (<nav className="nav">
         <Link to="/" classname="site-title"> Pomodoro Party</Link>
         <ul>
-            <CustomLink to="/profile">Profile</CustomLink>
+            <CustomLink to="/dashboard">Dashboard</CustomLink>
             <CustomLink to="/party">Party</CustomLink>
         </ul>
     </nav>
