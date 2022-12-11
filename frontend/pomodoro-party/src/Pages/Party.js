@@ -3,7 +3,6 @@ import Navbar from '../Navbar';
 import { useEffect, useState } from "react";
 import { Box, Center, Link } from "@chakra-ui/react"
 import Todo from '../Todo.js';
-import { use } from "base";
 
 export function Party() {
 
@@ -12,7 +11,7 @@ export function Party() {
          <Navbar/>
          <Center>
     <Box>
-    <Link display={"inline-block"} mr="15px" onClick={()=> sessionIDhandler() } >Session ID</Link>   
+    <Link display={"inline-block"} mr="15px" href="/profile" >Session ID</Link> 
         <Link display={"inline-block"} href="/profile" background="#fff" border="solid 1px black" p="5px 10px" >Invite a Friend</Link>   
     </Box>
    </Center>
