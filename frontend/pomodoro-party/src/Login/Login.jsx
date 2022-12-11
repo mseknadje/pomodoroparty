@@ -18,6 +18,7 @@ function Login() {
   return (
     <div className="login">
       <div className="login__container">
+      <p>Login to Pomodoro Party</p>
         <input
           type="text"
           className="login__textBox"
