@@ -82,7 +82,7 @@ body {
 }
 
 .nav li.active {
-  color: rgb(255, 218, 218);
+  color: rgb(224, 218, 255);
 }
 .nav li:hover {
   color: rgb(129, 129, 129)
