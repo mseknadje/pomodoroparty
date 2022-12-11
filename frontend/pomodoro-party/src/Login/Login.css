@@ -28,6 +28,12 @@
   .login__google {
     background-color: #ff2282;
   }
+  .button-container {
+    display: flex;
+    flex-direction: table-column;
+    justify-content: center;
+  }
+
   .login div {
     margin-top: 7px;
   }

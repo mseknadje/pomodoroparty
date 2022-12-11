@@ -32,15 +32,18 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
+        <div className="button-container">
         <button
-          className="login__btn"
           onClick={() => logInWithEmailAndPassword(email, password)}
         >
           Login
         </button>
-        <button className="login__btn login__google" onClick={signInWithGoogle}>
+        </div>
+        <div className="button-container">
+        <button onClick={signInWithGoogle}>
           Login with Google
         </button>
+        </div>
         <div>
           <Link to="/reset">Forgot Password</Link>
         </div>
