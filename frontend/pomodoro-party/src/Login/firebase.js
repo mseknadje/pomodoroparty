@@ -17,13 +17,13 @@ import {
   addDoc,
 } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyDIXJ5YT7hoNbBFqK3TBcV41-TzIO-7n7w",
-  authDomain: "fir-auth-6edd8.firebaseapp.com",
-  projectId: "fir-auth-6edd8",
-  storageBucket: "fir-auth-6edd8.appspot.com",
-  messagingSenderId: "904760319835",
-  appId: "1:904760319835:web:44fd0d957f114b4e51447e",
-  measurementId: "G-Q4TYKH9GG7",
+  apiKey: "AIzaSyDt2DsPS8W08PghNlU2ZBBYGu3-FOOWK4o",
+  authDomain: "pomodoro-party-8e414.firebaseapp.com",
+  projectId: "pomodoro-party-8e414",
+  storageBucket: "pomodoro-party-8e414.appspot.com",
+  messagingSenderId: "453359878600",
+  appId: "1:453359878600:web:f9a9eb37226975477f40fd",
+  measurementId: "G-QSSKPMYF1S"
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

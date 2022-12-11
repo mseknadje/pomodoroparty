@@ -13,6 +13,7 @@
     padding: 30px;
   }
   .dashboard__btn {
+    position:relative; 
     padding: 10px;
     font-size: 18px;
     margin-top: 10px;
