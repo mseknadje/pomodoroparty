@@ -24,6 +24,7 @@ function Register() {
   return (
     <div className="register">
       <div className="register__container">
+      <p>Create an Account</p>
         <input
           type="text"
           className="register__textBox"
