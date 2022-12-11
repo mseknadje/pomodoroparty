@@ -7,6 +7,15 @@ import { use } from "base";
 
 export function Party() {
 
+    const sessionIDhandler = function() {
+
+        console.log('copied text');
+        // generate random number for session ID here
+        // 
+        const sessionID = // get session ID from firebase???       
+        navigator.clipboard.writeText({sessionID});
+
+
     return (<div>
        
          <Navbar/>
@@ -23,4 +32,5 @@ export function Party() {
     <Timer minutes={45} width={"347.98px"} height={"347.98px"} left={"1055px"} top={"200.02px"} background={"#E5F5F1"}/> 
     <Timer minutes={60} width={"259.84px"} height={"251.5px"} left={"981px"} top={"591px"} background={"#FFF1DE"}/> 
     </div>)
+}
 }
