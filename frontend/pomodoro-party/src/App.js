@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import './Navbar.css';
 import Navbar from './Navbar';
-import Party from "./Pages/Party.jsx";
+import Party from "./Pages/Party";
 import Todo from './Todo';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import { Box } from "@chakra-ui/react";

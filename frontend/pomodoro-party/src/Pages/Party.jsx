@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Box, Center, Link } from "@chakra-ui/react"
 import Todo from '../Todo.js';
 
-export function Party() {
+export default function Party() {
 
     return (<div>
        
