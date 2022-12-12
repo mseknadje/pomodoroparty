@@ -34,7 +34,7 @@ export default function Todo(){
     background="#fff" p="15px" pb="50px">
         <Center>
             <Heading as="h1" padding="2px 10px" bgGradient="linear(to-l, #1e4460,#15364e)"
-             bgClip="text" fontWeight="bold" mb="15px">
+             bgClip="text" fontWeight="bold" mb="15px" fontFamily="Quicksand">
                 To-Do List
             </Heading>
         </Center>

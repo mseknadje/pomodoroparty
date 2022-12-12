@@ -1,0 +1,13 @@
+/* File: font.css */
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: local('Comfortaa'),
+         url('frontend/pomodoro-party/src/Fonts/Comfortaa/static/Comfortaa-Medium.ttf') format('tff');
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: local('Quicksand'),
+         url('frontend/pomodoro-party/src/Fonts/Quicksand/static/Quicksand-Medium.ttf') format('tff');
+}

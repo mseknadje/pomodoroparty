@@ -10,6 +10,8 @@ import Register from "./Login/Register";
 import Reset from "./Login/Reset";
 import Dashboard from "./Login/Dashboard";
 import Login from './Login/Login';
+import './Fonts/Comfortaa/static/Comfortaa-Medium.ttf';
+import './Fonts/Quicksand/static/Quicksand-Medium.ttf';
 
 function App() {
   return (
