@@ -9,17 +9,22 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: #dcdcdc;
-    padding: 30px;
+    background: rgb(30,68,96);
+    background: linear-gradient(90deg, rgba(30,68,96,1) 0%, rgba(39,78,108,1) 48%, rgba(21,54,78,1) 88%);
+    color: white; 
+    padding: 80px;
+    height: 350px;
+    border-radius: 25px;
   }
   .dashboard__btn {
     position:relative; 
+    border-radius: 13px;
     padding: 10px;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 30px;
     border: none;
-    color: white;
-    background-color: black;
+    color: rgb(26, 37, 61);
+    background-color: rgb(255, 230, 191);
   }
   .dashboard div {
     margin-top: 7px;

@@ -33,8 +33,8 @@ export default function Todo(){
     return <Box position="absolute" top="100px" width="313px" minHeight="368px" left="16px" 
     background="#fff" p="15px" pb="50px">
         <Center>
-            <Heading as="h1" padding="2px 10px" bgGradient="linear(to-l, #7928CA,#FF0080)"
-             bgClip="text" fontWeight="extrabold" mb="15px">
+            <Heading as="h1" padding="2px 10px" bgGradient="linear(to-l, #1e4460,#15364e)"
+             bgClip="text" fontWeight="bold" mb="15px">
                 To-Do List
             </Heading>
         </Center>

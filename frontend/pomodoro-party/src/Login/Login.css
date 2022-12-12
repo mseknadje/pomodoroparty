@@ -4,16 +4,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .login__container {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: #eef7fd;
+  background: rgb(255,238,214);
+  background: linear-gradient(90deg, rgba(255,238,214,1) 0%, rgba(255,232,232,1) 87%);
   padding: 100px;
+  border-radius: 25px;
 }
 .login__textBox {
-  padding: 10px;
+  padding: 13px;
   font-size: 18px;
   margin-bottom: 10px;
 }
@@ -23,12 +26,19 @@
   font-size: 18px;
   margin-bottom: 15px;
   border: none;
-  color: white;
-  background-color: rgb(43, 61, 131);
+  color: rgb(255, 255, 255);
+  background-color: rgb(49, 69, 102);
+  border-radius: 10px;
 }
 .login__google {
-  background-color: #757e9b;
+  background-color: rgb(49, 69, 102);
 }
 .login div {
   margin-top: 7px;
+}
+.header_text {
+  position: relative;
+  font-size: 50px;
+  color: rgb(108, 120, 156);
+  padding: 20px;
 }

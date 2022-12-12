@@ -6,14 +6,14 @@ import Todo from '../Todo.js';
 
 export function Party() {
 
-    return (<div>
+    return (<div classname="party">
        
-         <Navbar/>
-         <Center>
-    <Box>
-    <Link display={"inline-block"} mr="15px" href="/profile" >Session ID</Link> 
-        <Link display={"inline-block"} href="/profile" background="#fff" border="solid 1px black" p="5px 10px" >Invite a Friend</Link>   
-    </Box>
+    <Navbar/>
+    <Center>
+        <Box>
+        <Link display={"inline-block"} mr="15px" href="/profile" >Session ID</Link> 
+            <Link display={"inline-block"} href="/profile" background="#fff" border="solid 1px black" p="5px 10px" >Invite a Friend</Link>   
+        </Box>
    </Center>
     <Todo/>
     

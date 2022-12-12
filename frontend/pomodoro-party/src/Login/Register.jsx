@@ -23,8 +23,8 @@ function Register() {
   }, [user, loading]);
   return (
     <div className="register">
+      <p className="header_text">Create an Account</p>
       <div className="register__container">
-      <p>Create an Account</p>
         <input
           type="text"
           className="register__textBox"
@@ -56,7 +56,7 @@ function Register() {
           Register with Google
         </button>
         <div>
-          Already have an account? <Link to="/">Login</Link> now.
+          Already have an account? <Link to="/"><b>Login now</b></Link>.
         </div>
       </div>
     </div>

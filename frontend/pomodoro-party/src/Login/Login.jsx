@@ -17,8 +17,8 @@ function Login() {
   }, [user, loading]);
   return (
     <div className="login">
+      <p className="header_text">Login to Pomodoro Party!</p>
       <div className="login__container">
-      <p>Login to Pomodoro Party</p>
         <input
           type="text"
           className="login__textBox"
@@ -46,7 +46,7 @@ function Login() {
           <Link to="/reset">Forgot Password</Link>
         </div>
         <div>
-          Don't have an account? <Link to="/register">Register</Link> now.
+          Don't have an account? <Link to="/register"><b>Register now</b></Link>.
         </div>
       </div>
     </div>
