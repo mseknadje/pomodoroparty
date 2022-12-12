@@ -23,6 +23,7 @@ function Register() {
   }, [user, loading]);
   return (
     <div className="register">
+      <p className="app_name">Pomodoro Party</p>
       <p className="header_text">Create an Account</p>
       <div className="register__container">
         <input
@@ -49,12 +50,12 @@ function Register() {
         <button className="register__btn" onClick={register}>
           Register
         </button>
-        <button
+        {/* <button
           className="register__btn register__google"
           onClick={signInWithGoogle}
         >
           Register with Google
-        </button>
+        </button> */}
         <div>
           Already have an account? <Link to="/"><b>Login now</b></Link>.
         </div>

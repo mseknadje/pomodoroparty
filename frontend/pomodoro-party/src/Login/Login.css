@@ -42,3 +42,8 @@
   color: rgb(57, 68, 100);
   padding: 20px;
 }
+.app_name {
+  position: relative;
+  font-size: 25px;
+  color: rgb(57, 68, 100);
+}

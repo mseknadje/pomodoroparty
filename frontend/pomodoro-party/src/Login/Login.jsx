@@ -18,7 +18,8 @@ function Login() {
   }, [user, loading]);
   return (
     <div className="login">
-      <p className="header_text">Login to Pomodoro Party!</p>
+      <p className="app_name">Pomodoro Party</p>
+      <p className="header_text">Login to Your Account</p>
       <div className="login__container">
         <input
           type="text"
@@ -40,9 +41,9 @@ function Login() {
         >
           Login
         </button>
-        <button className="login__btn login__google" onClick={signInWithGoogle}>
+        {/* <button className="login__btn login__google" onClick={signInWithGoogle}>
           Login with Google
-        </button>
+        </button> */}
         <div>
           <Link to="/reset">Forgot Password</Link>
         </div>
