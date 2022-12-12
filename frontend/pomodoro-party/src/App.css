@@ -1,5 +1,20 @@
-.App {
+.app {
   text-align: center;
+  background: rgb(217,234,236);
+  background: linear-gradient(90deg, rgba(217,234,236,1) 0%, rgba(255,244,255,1) 87%);
+  font-family: "Quicksand";
+}
+
+@font-face {
+  font-family: 'Comfortaa';
+  src: local('Comfortaa'),
+       url('./Fonts/Comfortaa/static/Comfortaa-Medium.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: local('Quicksand'),
+       url('./Fonts/Quicksand/static/Quicksand-Medium.ttf') format("truetype");
 }
 
 .App-logo {
@@ -82,7 +97,7 @@ body {
 }
 
 .nav li.active {
-  color: rgb(224, 218, 255);
+  color: rgb(255, 255, 255);
 }
 .nav li:hover {
   color: rgb(129, 129, 129)
