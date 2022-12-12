@@ -6,7 +6,7 @@ import Todo from '../Todo.js';
 
 export function Party() {
 
-    return (<div classname="party">
+    return (<div>
        
     <Navbar/>
     <Center>
