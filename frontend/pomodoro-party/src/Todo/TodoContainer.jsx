@@ -41,7 +41,7 @@ setTodos(updatedItem)
     
     <Text bgGradient="linear(to-l, #7928CA,#FF0080)"
       bgClip="text"
-      fontSize="6xl"
+      fontSize="4xl"
       fontWeight="extrabold">
       Todo List
     </Text>
