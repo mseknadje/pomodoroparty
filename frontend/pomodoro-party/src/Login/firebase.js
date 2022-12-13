@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { getDatabase } from "firebase/database";
 import {useState} from "react";
 import {
   GoogleAuthProvider,
@@ -24,12 +25,17 @@ const firebaseConfig = {
   storageBucket: "pomodoro-party-8e414.appspot.com",
   messagingSenderId: "453359878600",
   appId: "1:453359878600:web:f9a9eb37226975477f40fd",
-  measurementId: "G-QSSKPMYF1S"
+  measurementId: "G-QSSKPMYF1S",
+  // Edits for Realtime database
+  // The value of `databaseURL` depends on the location of the database
+  databaseURL: "https://pomodoro-party-8e414-default-rtdb.firebaseio.com/",
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+// Initialize Realtime Database and get a reference to the service
+const database = getDatabase(app);
 let user;
 
 
