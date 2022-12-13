@@ -19,3 +19,11 @@ button {
     text-align: center;
   }
 
+  .timer__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #eef7fd;
+    padding: 100px;
+  }
+

@@ -1,0 +1,9 @@
+.timer__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #eef7fd;
+    height: 1000px;
+    width: 1000px;
+    background-color: deeppink;
+}
