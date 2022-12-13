@@ -75,8 +75,12 @@ export default function Party() {
         </Center>
     </Box>
     {/* <Todo/> */}
-    <Box position="absolute" top="100px" width="313px" minHeight="368px" left="16px" 
-    background="#fff" p="15px" pb="50px" borderRadius='lg'>
+    <Box position="absolute" top="100px" width="400px" minHeight="368px" left="16px" 
+    background="#fff" p="15px" pb="50px" borderRadius='lg' bgGradient={[
+        'linear(to-tr, teal.200, yellow.100)',
+        'linear(to-t, blue.200, teal.100)',
+        'linear(to-b, orange.100, purple.100)',
+      ]}>
         <Todo2/>
     </Box>
     
