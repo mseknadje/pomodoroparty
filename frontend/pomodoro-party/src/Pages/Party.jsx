@@ -27,23 +27,30 @@ export default function Party() {
             } else {
                 console.log("not signed in")
             }
-
         })
 
     }, [])
+
+    // create formatted date 
+    function getDate() {
+        let d = new Date(); 
+        d.toLocaleString();
+        return d;
+    }
     
     function createSession(e) {
         e.preventDefault()
         console.log(user)
         addDoc(colref, {
             id: user.email,
-            length: 2, 
+            sessionLength: 25, 
             // every time someone joins, just add 1 to users field
-            users: 2
+            users: 2,
+            // we are tracking the time that a session is created
+            sessionStart: getDate()
         })
-
-        navigator.clipboard.writeText(user.email);
-        alert("Your session ID has been copied to your clipboard!")
+        console.log(user.email)
+        alert(`Your session ID is: ${user.email}`)
     }
 
     return (
