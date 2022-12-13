@@ -67,16 +67,9 @@ export default function Party() {
             <Input placeholder='Enter Session ID' size='md' />
             <Button colorScheme='facebook' size='md'> Join Session </Button> 
             </HStack>
-            <HStack>
-            <Box>Set timer:</Box>
-            <Button colorScheme='pink' size='sm' variant='outline' onClick={() => setTime(15)}>15</Button>
-            <Button colorScheme='pink' size='sm' variant='outline' onClick={() => setTime(25)}>25</Button>
-            <Button colorScheme='pink' size='sm' variant='outline' onClick={() => setTime(45)}>45</Button>
-            <Button colorScheme='pink' size='sm' variant='outline' onClick={() => setTime(60)}>60</Button>
-            </HStack> 
     </VStack>
     </Box>
-    <Box p='120'>
+    <Box p='10'>
         <Center>
             <Timer2/>
             {/* <Timer minutes={time} width={"488.95px"} height={"473.22px"} left={"457px"} top={"300px"} background={"#EBE5F5"} />  */}

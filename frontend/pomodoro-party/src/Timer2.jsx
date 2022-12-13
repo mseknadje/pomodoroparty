@@ -1,4 +1,4 @@
-import { Button, Flex, Text, Center} from "@chakra-ui/react";
+import { Button, Flex, Text, VStack, HStack, Center} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 function Timer2() {
@@ -35,30 +35,28 @@ function Timer2() {
   }, [timerStart, time]);
   return (
     <div>
-        <Text fontWeight="bold" fontSize="7xl" color="white">
+        <VStack>
+        <Text fontWeight="bold" fontSize="9xl" color="white">
           {`${
             Math.floor(time / 60) < 10
               ? `0${Math.floor(time / 60)}`
               : `${Math.floor(time / 60)}`
           }:${time % 60 < 10 ? `0${time % 60}` : time % 60}`}
         </Text>
-        <Flex>
-            <Center>
             <Button
             width="7rem"
-            background="tomato"
+            background="pink"
             color="white"
             onClick={toggleTimer}
           >
             {!timerStart ? "Start" : "Pause"}
           </Button>
-            </Center>
-        </Flex>
+        </VStack>
         <Flex marginTop={10}>
           {buttons.map(({ value, display }) => (
             <Button
               marginX={4}
-              background="green.300"
+              background="blue.300"
               color="white"
               onClick={() => {
                 setTimerStart(false);
