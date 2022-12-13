@@ -1,3 +1,10 @@
 .party{
     color: white; 
 }
+.session{
+    height: 100vh;
+}
+.login_textBox{
+    height: 20px;
+    padding: 50px;
+}

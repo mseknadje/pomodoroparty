@@ -31,7 +31,7 @@ export default function Todo(){
 
 
     return <Box position="absolute" top="100px" width="313px" minHeight="368px" left="16px" 
-    background="#fff" p="15px" pb="50px">
+    background="#fff" p="15px" pb="50px" borderRadius='lg'>
         <Center>
             <Heading as="h1" padding="2px 10px" bgGradient="linear(to-l, #1e4460,#15364e)"
              bgClip="text" fontWeight="bold" mb="15px" fontFamily="Quicksand">
