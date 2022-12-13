@@ -8,7 +8,7 @@ import { addDoc, collection } from "firebase/firestore";
 import {db, auth} from "../Login/firebase.js"
 import { onAuthStateChanged } from "firebase/auth";
 import Todo2 from "../Todo/TodoContainer";
-
+import Timer2 from "../Timer2";
 
 export default function Party() {
 
@@ -69,15 +69,18 @@ export default function Party() {
             </HStack> 
     </VStack>
     </Box>
-    <Box p='300'>
+    <Box p='120'>
         <Center>
-            <Timer minutes={time} width={"488.95px"} height={"473.22px"} left={"457px"} top={"300px"} background={"#EBE5F5"} /> 
+            <Timer2/>
+            {/* <Timer minutes={time} width={"488.95px"} height={"473.22px"} left={"457px"} top={"300px"} background={"#EBE5F5"} />  */}
         </Center>
     </Box>
     {/* <Todo/> */}
     <Box position="absolute" top="100px" width="313px" minHeight="368px" left="16px" 
     background="#fff" p="15px" pb="50px" borderRadius='lg'>
         <Todo2/>
+    </Box>
+    <Box p='60'>
     </Box>
     
     </div>);
