@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './Timer.css';
+import './Pages/Party.jsx';
 
 
 function startTimer() {
@@ -26,6 +27,7 @@ function Timer(props) {
 
     function start() {
         // alert("start")
+        alert(props.minutes)
         setStartButton(!startButton)
 
         // global variable isPaused (bool)

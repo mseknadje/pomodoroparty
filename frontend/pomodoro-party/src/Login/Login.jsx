@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, logInWithEmailAndPassword, signInWithGoogle } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,8 +18,9 @@ function Login() {
   }, [user, loading]);
   return (
     <div className="login">
+      <p className="app_name">Pomodoro Party</p>
+      <p className="header_text">Login to Your Account</p>
       <div className="login__container">
-      <p>Login to Pomodoro Party</p>
         <input
           type="text"
           className="login__textBox"
@@ -39,14 +41,14 @@ function Login() {
         >
           Login
         </button>
-        <button className="login__btn login__google" onClick={signInWithGoogle}>
+        {/* <button className="login__btn login__google" onClick={signInWithGoogle}>
           Login with Google
-        </button>
+        </button> */}
         <div>
           <Link to="/reset">Forgot Password</Link>
         </div>
         <div>
-          Don't have an account? <Link to="/register">Register</Link> now.
+          Don't have an account? <Link to="/register"><b>Register now</b></Link>.
         </div>
       </div>
     </div>

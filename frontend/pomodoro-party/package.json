@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/react": "^2.4.3",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -12,7 +13,7 @@
     "@use-it/event-listener": "^0.1.7",
     "chakra": "^0.0.3",
     "firebase": "^9.15.0",
-    "framer-motion": "^7.6.19",
+    "framer-motion": "^4.1.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
