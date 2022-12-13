@@ -4,11 +4,46 @@ import { useEffect, useState } from "react";
 import { Box, Center, Link, HStack, VStack, Button, Input } from "@chakra-ui/react"
 import { useControllableProp, useControllableState } from '@chakra-ui/react'
 import Todo from '../Todo.js';
+import { addDoc, collection } from "firebase/firestore";
+import {db, auth} from "../Login/firebase.js"
+import { onAuthStateChanged } from "firebase/auth";
+
 
 export default function Party() {
 
-    const [time, setTime] = useControllableState({ defaultValue: 25})
+    // const [time, setTime] = useControllableState({ defaultValue: 25})
+    const[time, setTime] = useState(15);
     const [session, setSession] = useControllableState({ defaultValue: null})
+    const [user, setUser] = useState();
+    // collection reference to database
+    const colref = collection(db, "sessions")
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("signed in")
+                setUser(user)
+                console.log(user)
+            } else {
+                console.log("not signed in")
+            }
+
+        })
+
+    }, [])
+    
+    function createSession(e) {
+        e.preventDefault()
+        console.log(user)
+        addDoc(colref, {
+            id: user.email,
+            length: 2, 
+            // every time someone joins, just add 1 to users field
+            users: 2
+        })
+
+        navigator.clipboard.writeText(user.email);
+        alert("Your session ID has been copied to your clipboard!")
+    }
 
     return (
     <div>
@@ -18,7 +53,7 @@ export default function Party() {
            {/* <Link display={"inline-block"} mr="15px" href="/profile" >Create a Session</Link> 
                     <Link display={"inline-block"} href="/profile" background="#fff" border="solid 1px black" p="5px 10px" >Join a Session</Link>    */}
             <Box> 
-            <Button colorScheme='facebook' size='md'>Create a Session</Button>
+            <Button colorScheme='facebook' size='md' onClick={createSession}>Create a Session</Button>
             </Box>
             <HStack>
             <Input placeholder='Enter Session ID' size='md' />
