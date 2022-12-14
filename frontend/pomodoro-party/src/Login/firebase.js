@@ -1,5 +1,5 @@
-import { initializeApp } from 'firebase/app';
-import { getDatabase } from "firebase/database";
+import { initializeApp} from 'firebase/app';
+import {getDatabase, ref, set} from "firebase/database"
 import {useState} from "react";
 import {
   GoogleAuthProvider,
@@ -18,6 +18,7 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
+
 const firebaseConfig = {
   apiKey: "AIzaSyDt2DsPS8W08PghNlU2ZBBYGu3-FOOWK4o",
   authDomain: "pomodoro-party-8e414.firebaseapp.com",
@@ -34,9 +35,21 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
-// Initialize Realtime Database and get a reference to the service
-const database = getDatabase(app);
 let user;
+
+// Setting up realtime database
+export const database = getDatabase();
+const reference = ref(database, "timer");
+
+// function that updates timer in realtime database
+export function writeFakeData(startTime, sessionLength) {
+  set(reference, {
+    start_time: startTime,
+    session_length: sessionLength
+});
+}
+
+writeFakeData("10", "30");
 
 
 const signInWithGoogle = async () => {

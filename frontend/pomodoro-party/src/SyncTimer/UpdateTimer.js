@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import firebase, {firebaseConfig} from '../Login/firebase';
+import firebase, {database} from '../Login/firebase';
+import { ref, set } from 'firebase/database';
+import { writeFakeData } from '../Login/firebase';
 
-firebase.initializeApp(firebaseConfig);
 
 // create reference to realtime database
-let timerRef = firebase.database().ref("timer");
+const reference = ref(database, "timer");
 
 // function that updates timer in realtime database
-function updateTimer(value) {
-    timerRef.set(value);
-  }
+function updateTimer(startTime, duration) {
+  set(reference, {
+    start_time: startTime,
+    timer_length: duration
+  })
+}
+
+// function that updates timer in realtime database
+set(reference, {
+    test: "does this update",
+});
+
 
 // Listener for changes to the timer value in the Realtime Database
-    // Update the timer in your Javascript code to reflect the new value
+//     Update the timer in your Javascript code to reflect the new value
+
+writeFakeData("5", "10");
