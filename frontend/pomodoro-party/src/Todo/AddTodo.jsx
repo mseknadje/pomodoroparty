@@ -10,19 +10,19 @@ const [value, setValue] = useState("")
 function handleSubmit(e){
     e.preventDefault();
 
-if(value === ''){
-    toast({
-        title: "Please enter the text.",
-        status: "warning",
-        duration: 2000,
-        isClosable: true,
-      })
-      return;
+    if(value === ''){
+        toast({
+            title: "Please enter text.",
+            status: "warning",
+            duration: 2000,
+            isClosable: true,
+        })
+        return;
+        }
+    const todo = {
+        id: nanoid(),
+        text: value
     }
-const todo = {
-    id: nanoid(),
-    text: value
-}
 
 addTodo(todo)
 setValue('')

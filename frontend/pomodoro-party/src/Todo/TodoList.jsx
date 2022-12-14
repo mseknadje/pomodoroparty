@@ -1,4 +1,4 @@
-import { HStack, VStack,Text, Flex, Badge,Modal,
+import { HStack, VStack,Text, Flex, Badge,Modal, Checkbox,
     ModalOverlay,
     ModalContent,
     ModalHeader,
@@ -16,24 +16,22 @@ const [isOpen,setIsOpen] = useState(false)
 
 function onClose(){
     setIsOpen(false)
-  }
+}
 
 function handleEditClick(todo){
     setIsOpen(true)
-// we've set the passed todo to modal value
+    // we've set the passed todo to modal value
     setModalValue(todo)
     console.log(todo)
 }
 
 function handleEditInputChange(e,id){
- 
-setModalValue({ ...modalValue, text: e.target.value });
-console.log(modalValue,id) 
+    setModalValue({ ...modalValue, text: e.target.value });
+    console.log(modalValue,id) 
 }
 
 function handleEditSubmit(e){
   e.preventDefault();
- 
   editTodo(modalValue.id,modalValue)
   setModalValue("")
   setIsOpen(false)
@@ -47,21 +45,21 @@ function handleEditSubmit(e){
        variant="outline"
        borderRadius="4"
        p='4' m='5'
-       >No todos for Today!!</Badge> 
+       >No todos for Today!</Badge> 
        : (
         <VStack>
         {todos.map((todo) => (
             
             <HStack spacing="24px" w="320px">
-                <Flex p={6} w="300px" h="50px" justifyContent="space-between">
+                <Flex p={8} w="300px" h="50px" justifyContent="space-between">
                 <Text>{todo.text}</Text>
           
+                <Flex w="8px" >
 
-                <Flex w="10px" >
-                
-                <DeleteIcon color="red.500" mr="2" onClick={()=>deleteTodo(todo.id)}/>
+                <DeleteIcon color="red.500" mr="1" onClick={()=>deleteTodo(todo.id)}/>
                 <EditIcon onClick={()=>handleEditClick(todo)} />
-                 
+                <Checkbox mt="8px" pl="6px" mr="2"/>
+  
                 </Flex>
                 
             {/* modal for editing a todo */}
@@ -81,7 +79,8 @@ function handleEditSubmit(e){
             onChange={handleEditInputChange} />
             </ModalBody>
             <ModalFooter>
-            <Button colorScheme="teal" mr={3} onClick={onClose}>
+            
+            <Button colorScheme="green" mr={3} onClick={onClose}>
             Close
             </Button>
             <Button type="submit" colorScheme="teal" mr={3}>
@@ -98,7 +97,7 @@ function handleEditSubmit(e){
   
             </HStack>  
             
-            ))} 
+       ))} 
           
         </VStack>
         ) 
