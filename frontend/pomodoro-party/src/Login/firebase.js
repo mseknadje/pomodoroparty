@@ -38,18 +38,18 @@ const googleProvider = new GoogleAuthProvider();
 let user;
 
 // Setting up realtime database
-export const database = getDatabase();
+const database = getDatabase();
 const reference = ref(database, "timer");
 
 // function that updates timer in realtime database
-export function writeFakeData(startTime, sessionLength) {
+export function updateTimer(username, startTime, sessionLength) {
   set(reference, {
+    user: username,
     start_time: startTime,
     session_length: sessionLength
 });
 }
-
-writeFakeData("10", "30");
+updateTimer("sabrina", "5", "100");
 
 
 const signInWithGoogle = async () => {

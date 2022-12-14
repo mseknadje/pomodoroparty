@@ -1,5 +1,6 @@
 import { Button, Flex, Text, VStack, HStack, Center} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import {updateTimer} from "./Login/firebase.js"
 
 function Timer2() {
   const [time, setTime] = useState(0);
@@ -47,7 +48,10 @@ function Timer2() {
             width="7rem"
             background="pink"
             color="white"
-            onClick={toggleTimer}
+            onClick={() => {
+              toggleTimer();
+              setTimerStart("fakeuser", "10", "20");
+            }}
           >
             {!timerStart ? "Start" : "Pause"}
           </Button>
