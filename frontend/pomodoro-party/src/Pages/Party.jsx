@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Box, Center, Link, HStack, VStack, Button, Input } from "@chakra-ui/react"
 import { useControllableProp, useControllableState } from '@chakra-ui/react'
 import Todo from '../Todo.js';
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import {db, auth} from "../Login/firebase.js"
 import { onAuthStateChanged } from "firebase/auth";
 import Todo2 from "../Todo/TodoContainer";
@@ -16,8 +16,12 @@ export default function Party() {
     const[time, setTime] = useState(15);
     const [session, setSession] = useControllableState({ defaultValue: null})
     const [user, setUser] = useState();
+    // for number of users per session, default is 1 
+    const [userNumber, setUserNumber] = useState(1);
     // collection reference to database
     const colref = collection(db, "sessions")
+    
+    // just to check whether someone is logged in 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -28,29 +32,55 @@ export default function Party() {
                 console.log("not signed in")
             }
         })
-
     }, [])
 
-    // create formatted date 
+
     function getDate() {
         let d = new Date(); 
         d.toLocaleString();
         return d;
     }
     
+    const initializeStartingTime = getDate();
+
+    /**
+     * stores a session created by a user to firestore, and also creates an alert
+     * to the user providing their email (session ID) 
+     * @param {*} e - user event 
+     */
     function createSession(e) {
+        // prevents page from refreshing 
         e.preventDefault()
         console.log(user)
         addDoc(colref, {
             id: user.email,
             sessionLength: 25, 
             // every time someone joins, just add 1 to users field
-            users: 2,
+            users: 1,
             // we are tracking the time that a session is created
-            sessionStart: getDate()
+            sessionStart: getDate(),
+            startingTime: initializeStartingTime,
         })
         console.log(user.email)
-        alert(`Your session ID is: ${user.email}`)
+        alert(`Your session ID is: ${user.email}. Share the ID with a friend and have fun!`)
+    }
+
+    function joinSession(e) {
+        e.preventDefault();
+        console.log(Input.value);
+        // everytime someone joins by clicking join, we add 1 to users field of session
+        setUserNumber(userNumber + 1);
+        updateDoc(doc(db, "sessions", user.email), {
+            id: user.email,
+            sessionLength: 30, 
+            users: userNumber,
+        })
+    }
+
+    function updateTimerStart() {
+        updateDoc(doc(db, "sessions", user.email), {
+            timerStartTime: Date.now(),
+        })
     }
 
     return (
@@ -65,13 +95,13 @@ export default function Party() {
             </Box>
             <HStack>
             <Input placeholder='Enter Session ID' size='md' />
-            <Button colorScheme='facebook' size='md'> Join Session </Button> 
+            <Button colorScheme='facebook' size='md' onClick={joinSession}> Join Session </Button> 
             </HStack>
     </VStack>
     </Box>
     <Box p='10'>
         <Center>
-            <Timer2/>
+            <Timer2 changeTime={value => setTime(value)} updateTimerStart={updateTimerStart}/>
             {/* <Timer minutes={time} width={"488.95px"} height={"473.22px"} left={"457px"} top={"300px"} background={"#EBE5F5"} />  */}
         </Center>
     </Box>

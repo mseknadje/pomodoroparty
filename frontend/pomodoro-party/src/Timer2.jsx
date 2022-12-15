@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import {updateTimer} from "./Login/firebase.js"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./Login/firebase";
+import {updateTimerStart} from "./Pages/Party"
 
-
-function Timer2() {
+function Timer2(props) {
   const [user, loading, error] = useAuthState(auth);
   const [time, setTime] = useState(0);
   const [timerStart, setTimerStart] = useState(false);
@@ -26,6 +26,7 @@ function Timer2() {
   const toggleTimer = () => {
     setTimerStart(!timerStart);
   };
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (timerStart) {
@@ -38,9 +39,12 @@ function Timer2() {
     }, 1000);
     return () => clearInterval(interval);
   }, [timerStart, time]);
+  
+  
   return (
     <div>
         <VStack>
+          {/* main text */}
         <Text fontWeight="bold" fontSize="9xl" color="white">
           {`${
             Math.floor(time / 60) < 10
@@ -48,6 +52,7 @@ function Timer2() {
               : `${Math.floor(time / 60)}`
           }:${time % 60 < 10 ? `0${time % 60}` : time % 60}`}
         </Text>
+        {/* start button */}
             <Button
             width="7rem"
             background="pink"
@@ -55,6 +60,7 @@ function Timer2() {
             onClick={() => {
               toggleTimer();
               updateTimer(user.email, time);
+
             }}
           >
             {!timerStart ? "Start" : "Pause"}
@@ -69,6 +75,8 @@ function Timer2() {
               onClick={() => {
                 setTimerStart(false);
                 setTime(value);
+                // we need to pass in value in Party.jsx 
+                props.changeTime(value);
               }}
             >
               {display}
