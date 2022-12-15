@@ -20,6 +20,14 @@ export default function Party() {
     const [userNumber, setUserNumber] = useState(1);
     // collection reference to database
     const colref = collection(db, "sessions")
+
+    /**
+     * for connection setup
+     */
+    const [testTime, setTestTime] = useState();
+    const [info, setInfo] = useState();
+    const [fbKey, setfbKey] = useState('');
+    const [joinValue, setJoinValue] = useState();
     
     // just to check whether someone is logged in 
     useEffect(() => {
@@ -43,44 +51,113 @@ export default function Party() {
     
     const initializeStartingTime = getDate();
 
-    /**
+       /**
      * stores a session created by a user to firestore, and also creates an alert
      * to the user providing their email (session ID) 
      * @param {*} e - user event 
      */
-    function createSession(e) {
+       function createSession(e) {
         // prevents page from refreshing 
         e.preventDefault()
         console.log(user)
         addDoc(colref, {
             id: user.email,
-            sessionLength: 25, 
+            sessionLength: 25,
             // every time someone joins, just add 1 to users field
             users: 1,
             // we are tracking the time that a session is created
             sessionStart: getDate(),
             startingTime: initializeStartingTime,
+            countdown: 99
+        }).then(function (docRef) {
+            //.then is same as await
+            console.log("Document written with ID: ", docRef.id);
+            return docRef;
+            // https://stackoverflow.com/questions/70137841/firebaseerror-expected-type-ia-but-it-was-a-custom-oa-object 
+        }).then(d => {
+            const getData = async () => {
+                setfbKey(d.id);
+                const docRef = doc(db, "sessions", d.id);
+                // https://dev.to/hirajatamil/firebase-9-firestore-get-a-document-by-id-using-getdoc-3j4f 
+                const docSnap = await getDoc(d);
+
+                console.log(docSnap.data());
+                const s = docSnap.data();
+
+                setTestTime(s.countdown);
+            }
+
+            getData();
         })
+
         console.log(user.email)
-        alert(`Your session ID is: ${user.email}. Share the ID with a friend and have fun!`)
+        alert(`Your session ID is: ${user.email}`)
+
     }
 
+    useEffect(() => {
+        console.log('info', fbKey)
+
+    }, [fbKey])
+
     function joinSession(e) {
-        e.preventDefault();
-        console.log(Input.value);
-        // everytime someone joins by clicking join, we add 1 to users field of session
-        setUserNumber(userNumber + 1);
-        updateDoc(doc(db, "sessions", user.email), {
-            id: user.email,
-            sessionLength: 30, 
-            users: userNumber,
-        })
+        // e.preventDefault();
+        // console.log(Input.value);
+        // // everytime someone joins by clicking join, we add 1 to users field of session
+        // setUserNumber(userNumber + 1);
+        // updateDoc(doc(db, "sessions", user.email), {
+        //     id: user.email,
+        //     sessionLength: 30, 
+        //     users: userNumber,
+        // })
+        setfbKey(value);
+        // need to keep working on this
     }
 
     function updateTimerStart() {
         updateDoc(doc(db, "sessions", user.email), {
             timerStartTime: Date.now(),
         })
+    }
+
+    /**
+     * The following is for testing + making connection to Firebase
+     */
+    function TestTimer({ value, timeHandler }) {
+        return <Box border="solid 1px black">
+            <Box>{value}</Box>
+            <button onClick={() => timeHandler()}>Start Timer</button>
+        </Box>
+    }
+
+    const timeHandler = (value) => {
+        console.log('click time handler',);
+        const docRef = doc(db, "sessions", fbKey);
+
+        let timeleft = value;
+        let downloadTimer = setInterval(function () {
+            if (timeleft <= 0) {
+                clearInterval(downloadTimer) //this ends the timer
+            }
+
+            const data = {
+                id: user.email,
+                countdown: timeleft
+            };
+            
+            setTestTime(timeleft);
+
+            // https://softauthor.com/firebase-cloud-firestore-update-document-data/ 
+            setDoc(docRef, data).then(docRef => {
+                console.log("Entire Document has been updated successfully");
+            }).catch(error => {
+                console.log(error);
+            })
+
+            // decrements time which is stored to firebase
+            timeleft -= 1;
+            // the rate at which the document is updated in firestore
+        }, 100); 
     }
 
     return (
@@ -102,6 +179,7 @@ export default function Party() {
     <Box p='10'>
         <Center>
             <Timer2 changeTime={value => setTime(value)} updateTimerStart={updateTimerStart}/>
+            <TestTimer timeHandler={timeHandler} value={testTime}/>
             {/* <Timer minutes={time} width={"488.95px"} height={"473.22px"} left={"457px"} top={"300px"} background={"#EBE5F5"} />  */}
         </Center>
     </Box>
