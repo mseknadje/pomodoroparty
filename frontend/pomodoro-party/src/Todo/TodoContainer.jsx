@@ -46,7 +46,7 @@ function editTodo(id,updatedTodo){
   return (
     <VStack p={2}>
     
-    <Text bgGradient="linear(to-l, #7928CA,#FF0080)"
+    <Text bgGradient="linear(to-l, #235377,#235377)"
       bgClip="text"
       fontSize="4xl"
       fontWeight="extrabold">
