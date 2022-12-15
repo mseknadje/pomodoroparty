@@ -42,14 +42,13 @@ const database = getDatabase();
 const reference = ref(database, "timer");
 
 // function that updates timer in realtime database
-export function updateTimer(username, startTime, sessionLength) {
+export function updateTimer(username, timeLength) {
+  console.log(username)
   set(reference, {
     user: username,
-    start_time: startTime,
-    session_length: sessionLength
+    session_length: timeLength
 });
 }
-updateTimer("sabrina", "5", "100");
 
 
 const signInWithGoogle = async () => {
