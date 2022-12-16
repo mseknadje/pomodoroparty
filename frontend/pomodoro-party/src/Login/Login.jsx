@@ -9,6 +9,10 @@ function Login() {
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
+  const routeChange = () =>{ 
+    let path = `/dashboard`; 
+    navigate(path);
+  }
   useEffect(() => {
     if (loading) {
       // maybe trigger a loading screen
