@@ -48,7 +48,7 @@ function Timer2() {
    * @returns - the length of the session in minutes 
    */
   function convertSessionLength(time) {
-    let minutes = Math.floor(time/60);
+    let minutes = Math.floor(time / 60);
   }
 
 
@@ -58,8 +58,8 @@ function Timer2() {
         {/* main text */}
         <Text fontWeight="bold" fontSize="9xl" color="white">
           {`${Math.floor(time / 60) < 10
-              ? `0${Math.floor(time / 60)}`
-              : `${Math.floor(time / 60)}`
+            ? `0${Math.floor(time / 60)}`
+            : `${Math.floor(time / 60)}`
             }:${time % 60 < 10 ? `0${time % 60}` : time % 60}`}
         </Text>
         {/* start button */}
