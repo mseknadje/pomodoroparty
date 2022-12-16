@@ -1,16 +1,16 @@
 import Timer from "../Timer";
 import Navbar from '../Navbar';
-import { useEffect, useState } from "react";
-import { Box, Center, Link, HStack, VStack, Button, Input } from "@chakra-ui/react"
+import { useEffect, useState, useRef } from "react";
+import { Box, Center, HStack, VStack, Button, Input } from "@chakra-ui/react"
 import { useControllableProp, useControllableState } from '@chakra-ui/react'
 import Todo from '../Todo.js';
-import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
+import { addDoc, collection, updateDoc, docs, doc, setDoc, getDoc } from "firebase/firestore";
 import {db, auth} from "../Login/firebase.js"
 import { onAuthStateChanged } from "firebase/auth";
 import Todo2 from "../Todo/TodoContainer";
 import Timer2 from "../Timer2";
 
-export default function Party() {
+export default function Party(props) {
 
     // const [time, setTime] = useControllableState({ defaultValue: 25})
     const[time, setTime] = useState(15);
@@ -19,7 +19,7 @@ export default function Party() {
     // for number of users per session, default is 1 
     const [userNumber, setUserNumber] = useState(1);
     // collection reference to database
-    const colref = collection(db, "sessions")
+    const colref = collection(db, "sessions");
 
     /**
      * for connection setup
@@ -27,7 +27,9 @@ export default function Party() {
     const [testTime, setTestTime] = useState();
     const [info, setInfo] = useState();
     const [fbKey, setfbKey] = useState('');
-    const [joinValue, setJoinValue] = useState();
+    // used for "join session", joinValue is the unique session identifier
+    const [joinValue, setJoinValue] = useState("");
+    const [countdown, setCountdown] = useState();
     
     // just to check whether someone is logged in 
     useEffect(() => {
@@ -51,7 +53,16 @@ export default function Party() {
     
     const initializeStartingTime = getDate();
 
-       /**
+    /**
+     * Handles changes related to the "Join Session" input box. 
+     * Should set 
+     * @param {*} event 
+     */
+    const handleInputSession = event => {
+        setJoinValue(event.target.value);
+    }
+
+    /**
      * stores a session created by a user to firestore, and also creates an alert
      * to the user providing their email (session ID) 
      * @param {*} e - user event 
@@ -60,15 +71,17 @@ export default function Party() {
         // prevents page from refreshing 
         e.preventDefault()
         console.log(user)
-        addDoc(colref, {
+        console.log(props.sessionLength);
+        addDoc(collection(db, "sessions"), {
             id: user.email,
-            sessionLength: 25,
+            // passing this value in from Timer2.jsx
+            sessionLength: props.sessionLength,
             // every time someone joins, just add 1 to users field
-            users: 1,
+            users: userNumber,
             // we are tracking the time that a session is created
             sessionStart: getDate(),
             startingTime: initializeStartingTime,
-            countdown: 99
+            countdown: 99 // hardcoded for now, needs to update
         }).then(function (docRef) {
             //.then is same as await
             console.log("Document written with ID: ", docRef.id);
@@ -84,7 +97,7 @@ export default function Party() {
                 console.log(docSnap.data());
                 const s = docSnap.data();
 
-                setTestTime(s.countdown);
+                setTime(s.countdown);
             }
 
             getData();
@@ -97,28 +110,25 @@ export default function Party() {
 
     useEffect(() => {
         console.log('info', fbKey)
-
     }, [fbKey])
 
+    /**
+     * A function that gets called when the joinSesion button is clicked.
+     * Should allow a user to join a session given its unique ID 
+     * @param {*} e 
+     */
     function joinSession(e) {
         // e.preventDefault();
-        // console.log(Input.value);
-        // // everytime someone joins by clicking join, we add 1 to users field of session
-        // setUserNumber(userNumber + 1);
         // updateDoc(doc(db, "sessions", user.email), {
         //     id: user.email,
         //     sessionLength: 30, 
         //     users: userNumber,
         // })
-        setfbKey(value);
-        // need to keep working on this
+        // set the key to the value of the input
+        setfbKey(joinValue);
+        console.log(fbKey);
     }
 
-    function updateTimerStart() {
-        updateDoc(doc(db, "sessions", user.email), {
-            timerStartTime: Date.now(),
-        })
-    }
 
     /**
      * The following is for testing + making connection to Firebase
@@ -130,8 +140,17 @@ export default function Party() {
         </Box>
     }
 
+    /**
+     * A handler that stores and decrements the timer countdown in firebase
+     * This should in theory allow any user to connect to a session given its unique
+     * auto-generated ID, and get the value of seconds left on the timer which is 
+     * continuously updated as timer counts down 
+     * 
+     * @param {*} value 
+     */
     const timeHandler = (value) => {
         console.log('click time handler',);
+        // getting a reference to our database with the unique code to a session document
         const docRef = doc(db, "sessions", fbKey);
 
         let timeleft = value;
@@ -171,14 +190,14 @@ export default function Party() {
             <Button colorScheme='facebook' size='md' onClick={createSession}>Create a Session</Button>
             </Box>
             <HStack>
-            <Input placeholder='Enter Session ID' size='md' />
+            <Input placeholder='Enter Session ID' size='md' value={joinValue} onChange={handleInputSession}/>
             <Button colorScheme='facebook' size='md' onClick={joinSession}> Join Session </Button> 
             </HStack>
     </VStack>
     </Box>
     <Box p='10'>
         <Center>
-            <Timer2 changeTime={value => setTime(value)} updateTimerStart={updateTimerStart}/>
+            <Timer2 />
             <TestTimer timeHandler={timeHandler} value={testTime}/>
             {/* <Timer minutes={time} width={"488.95px"} height={"473.22px"} left={"457px"} top={"300px"} background={"#EBE5F5"} />  */}
         </Center>
