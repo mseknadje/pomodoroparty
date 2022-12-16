@@ -1,11 +1,23 @@
 import Timer from "../Timer";
 import Navbar from '../Navbar';
 import { useEffect, useState, useRef } from "react";
-import { Box, Center, HStack, VStack, Button, Input } from "@chakra-ui/react"
+import {Box, Center, HStack, VStack, Button, Input, Flex} from "@chakra-ui/react"
 import { useControllableProp, useControllableState } from '@chakra-ui/react'
 import Todo from '../Todo.js';
-import { addDoc, collection, updateDoc, docs, doc, setDoc, getDoc } from "firebase/firestore";
-import { db, auth } from "../Login/firebase.js"
+import {
+    addDoc,
+    collection,
+    updateDoc,
+    docs,
+    doc,
+    getDocs,
+    setDoc,
+    getDoc,
+    onSnapshot,
+    query,
+    where
+} from "firebase/firestore";
+import {db, auth} from "../Login/firebase.js"
 import { onAuthStateChanged } from "firebase/auth";
 import Todo2 from "../Todo/TodoContainer";
 import Timer2 from "../Timer2";
