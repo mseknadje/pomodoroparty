@@ -2,7 +2,7 @@
 
 #### Project name
 
-###### Final Project
+###### **CS 32 Final Project**: Pomodoro Party
 
 #### Project description
 
