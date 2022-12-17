@@ -157,7 +157,7 @@ export default function Party(props) {
 
     /**
      * The following timer was adapted from Timer and Timer2
-     * @param timeValue - number of minutes 
+     * @param timeValue - value of useState timeValue, helps assign initial value of timer
      * @param timeHandler - allows us to perform functions when start button is clicked
      */
     function FinalTimer({ timeValue, timeHandler }) {
@@ -209,7 +209,7 @@ export default function Party(props) {
                         {display}
                     </Button>
                 ))}
-            </Flex>
+            </Flex> 
 
         </Box>
     }
