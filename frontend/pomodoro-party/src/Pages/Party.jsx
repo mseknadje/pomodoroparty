@@ -303,4 +303,5 @@ export default function Party(props) {
             </Box>
 
         </div>);
+
 }
