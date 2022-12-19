@@ -29,7 +29,7 @@ function Register() {
       <div className="register__container">
         <input
           type="text"
-          className="register__textBox"
+          className="register__textBox"          
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Full Name"
