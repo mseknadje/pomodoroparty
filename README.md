@@ -2,7 +2,7 @@
 
 #### Project name
 
-#####Pomodoro Party
+Pomodoro Party
 
 #### Project description
 
